@@ -13,7 +13,6 @@ gem 'sdoc', group: :doc
 
 group :development, :test do
   gem 'sqlite3'
-  gem 'arel', '6.0.0.beta2' # Added 11/26/2014 to keep green test run.
   gem 'byebug'
   gem 'web-console', '~> 2.0.0.beta4'
   gem 'spring'

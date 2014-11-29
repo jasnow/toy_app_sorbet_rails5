@@ -155,7 +155,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  arel (= 6.0.0.beta2)
   byebug
   coffee-rails
   jbuilder
