@@ -13,6 +13,7 @@ gem 'sdoc', group: :doc
 
 group :development, :test do
   gem 'sqlite3'
+  gem 'arel', '6.0.0.beta2' # Patch for Rails 4.2.0.beta4
   gem 'byebug'
   gem 'web-console', '~> 2.0.0.beta4'
   gem 'spring'
