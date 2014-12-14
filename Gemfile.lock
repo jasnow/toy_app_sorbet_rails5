@@ -164,10 +164,10 @@ DEPENDENCIES
   rails (= 4.2.0.rc3)
   rails-html-sanitizer
   rails_12factor
-  sass-rails (~> 5.0.0.beta1)
+  sass-rails
   sdoc
   spring
   sqlite3
   turbolinks
   uglifier
-  web-console (~> 2.0.0.beta4)
+  web-console
