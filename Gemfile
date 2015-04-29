@@ -10,6 +10,7 @@ gem 'turbolinks'
 gem 'jbuilder'
 gem 'rails-html-sanitizer'
 gem 'sdoc', group: :doc
+gem 'overcommit'
 
 group :development, :test do
   gem 'sqlite3'

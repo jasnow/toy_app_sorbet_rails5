@@ -42,6 +42,8 @@ GEM
     builder (3.2.2)
     byebug (4.0.5)
       columnize (= 0.9.0)
+    childprocess (0.5.6)
+      ffi (~> 1.0, >= 1.0.11)
     coffee-rails (4.1.0)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0, < 5.0)
@@ -53,9 +55,11 @@ GEM
     debug_inspector (0.0.2)
     erubis (2.7.0)
     execjs (2.5.2)
+    ffi (1.9.8)
     globalid (0.3.5)
       activesupport (>= 4.1.0)
     i18n (0.7.0)
+    iniparse (1.4.0)
     jbuilder (2.2.13)
       activesupport (>= 3.0.0, < 5)
       multi_json (~> 1.2)
@@ -74,6 +78,9 @@ GEM
     multi_json (1.11.0)
     nokogiri (1.6.6.2)
       mini_portile (~> 0.6.0)
+    overcommit (0.24.0)
+      childprocess (~> 0.5.6)
+      iniparse (~> 1.4)
     pg (0.18.1)
     rack (1.6.0)
     rack-test (0.6.3)
@@ -151,6 +158,7 @@ DEPENDENCIES
   coffee-rails
   jbuilder
   jquery-rails
+  overcommit
   pg
   rails (= 4.2.1)
   rails-html-sanitizer
