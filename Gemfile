@@ -12,10 +12,13 @@ gem 'rails-html-sanitizer'
 gem 'sdoc', group: :doc
 gem 'overcommit'
 
+group :development do
+  gem 'web-console'
+end
+
 group :development, :test do
   gem 'sqlite3'
   gem 'byebug'
-  gem 'web-console'
   gem 'spring'
 end
 
