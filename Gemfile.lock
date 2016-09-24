@@ -81,7 +81,7 @@ GEM
     overcommit (0.36.0)
       childprocess (~> 0.5.8)
       iniparse (~> 1.4)
-    pg (0.18.4)
+    pg (0.19.0)
     pkg-config (1.1.7)
     rack (1.6.4)
     rack-test (0.6.3)
