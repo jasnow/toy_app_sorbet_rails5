@@ -18,30 +18,30 @@ class MicropostsControllerTest < ActionController::TestCase
 
   test "should create micropost" do
     assert_difference('Micropost.count') do
-      post :create, micropost: { content: @micropost.content, user_id: @micropost.user_id }
+      post :create, params: { micropost: { content: @micropost.content, user_id: @micropost.user_id } }
     end
 
     assert_redirected_to micropost_path(assigns(:micropost))
   end
 
   test "should show micropost" do
-    get :show, id: @micropost
+    get :show, params: { id: @micropost }
     assert_response :success
   end
 
   test "should get edit" do
-    get :edit, id: @micropost
+    get :edit, params: { id: @micropost }
     assert_response :success
   end
 
   test "should update micropost" do
-    patch :update, id: @micropost, micropost: { content: @micropost.content, user_id: @micropost.user_id }
+    patch :update, params: { id: @micropost, micropost: { content: @micropost.content, user_id: @micropost.user_id } }
     assert_redirected_to micropost_path(assigns(:micropost))
   end
 
   test "should destroy micropost" do
     assert_difference('Micropost.count', -1) do
-      delete :destroy, id: @micropost
+      delete :destroy, params: { id: @micropost }
     end
 
     assert_redirected_to microposts_path

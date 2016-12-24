@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.2.7.1'
+gem 'rails', '5.0.1'
 
 gem 'sass-rails'
 gem 'uglifier'
@@ -20,6 +20,7 @@ group :development, :test do
   gem 'sqlite3'
   gem 'byebug'
   gem 'spring'
+  gem 'rails-controller-testing'
 end
 
 group :production do
