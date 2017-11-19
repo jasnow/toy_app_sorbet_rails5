@@ -87,7 +87,7 @@ GEM
       iniparse (~> 1.4)
     pg (0.21.0)
     rack (2.0.3)
-    rack-test (0.7.0)
+    rack-test (0.7.1)
       rack (>= 1.0, < 3)
     rails (5.1.4)
       actioncable (= 5.1.4)
