@@ -93,7 +93,7 @@ GEM
       childprocess (~> 0.6, >= 0.6.3)
       iniparse (~> 1.4)
     pg (1.0.0)
-    rack (2.0.3)
+    rack (2.0.4)
     rack-test (0.8.2)
       rack (>= 1.0, < 3)
     rails (5.2.0.rc1)
