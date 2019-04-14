@@ -1,8 +1,7 @@
 language: ruby
 
 rvm:
-- 2.4.6
+- 2.6.2
 
 before_script: bundle exec rake db:migrate
 cache: bundler
-sudo: false
