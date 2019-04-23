@@ -4,7 +4,7 @@ gem 'rails', '6.0.0.beta3'
 
 gem 'sass-rails'
 gem 'uglifier'
-gem 'coffee-rails', git: 'https://github.com/rails/coffee-rails'
+gem 'coffee-rails'
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', git: 'https://github.com/rails/jbuilder'
