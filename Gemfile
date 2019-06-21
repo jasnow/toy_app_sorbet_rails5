@@ -11,6 +11,9 @@ gem 'rails-html-sanitizer'
 gem 'sdoc', group: :doc
 gem 'overcommit'
 
+gem 'sorbet'
+gem 'sorbet-runtime'
+
 group :development do
   gem 'web-console'
 end

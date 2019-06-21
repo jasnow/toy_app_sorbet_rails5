@@ -147,6 +147,10 @@ GEM
       tilt
     sdoc (1.0.0)
       rdoc (>= 5.0)
+    sorbet (0.4.4271)
+      sorbet-static (= 0.4.4271)
+    sorbet-runtime (0.4.4271)
+    sorbet-static (0.4.4271-universal-darwin-14)
     spring (2.1.0)
     sprockets (3.7.2)
       concurrent-ruby (~> 1.0)
@@ -191,6 +195,8 @@ DEPENDENCIES
   rails_12factor
   sassc-rails
   sdoc
+  sorbet
+  sorbet-runtime
   spring
   sqlite3
   turbolinks
@@ -198,4 +204,4 @@ DEPENDENCIES
   web-console
 
 BUNDLED WITH
-   2.1.0.pre.1
+   1.17.3
