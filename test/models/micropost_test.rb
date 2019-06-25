@@ -1,3 +1,4 @@
+# typed: strong
 require 'test_helper'
 
 class MicropostTest < ActiveSupport::TestCase
