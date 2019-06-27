@@ -1,4 +1,4 @@
-# typed: false
+# typed: strict
 class User < ActiveRecord::Base
   has_many :microposts
 
