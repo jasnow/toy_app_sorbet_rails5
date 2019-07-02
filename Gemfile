@@ -13,7 +13,7 @@ gem 'overcommit'
 
 gem 'sorbet'
 gem 'sorbet-runtime'
-gem 'sorbet-rails'
+#gem 'sorbet-rails'
 
 group :development do
   gem 'web-console'
