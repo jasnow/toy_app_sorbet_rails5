@@ -7,7 +7,7 @@
 #
 #   https://github.com/sorbet/sorbet-typed/new/master?filename=lib/sorbet-runtime/all/sorbet-runtime.rbi
 #
-# sorbet-runtime-0.4.4390
+# sorbet-runtime-0.4.4394
 module T::Configuration
   def self.call_validation_error_handler(signature, opts); end
   def self.call_validation_error_handler=(value); end
@@ -80,7 +80,6 @@ module T::Utils
   def self.signature_for_instance_method(mod, method_name); end
   def self.string_truncate_middle(str, start_len, end_len, ellipsis = nil); end
   def self.unwrap_nilable(type); end
-  def self.validate_sigs; end
   def self.wrap_method_with_call_validation_if_needed(mod, method_sig, original_method); end
 end
 class T::Utils::RuntimeProfiled
