@@ -89,7 +89,7 @@ GEM
     mini_mime (1.0.1)
     mini_portile2 (2.4.0)
     minitest (5.11.3)
-    nio4r (2.3.1)
+    nio4r (2.4.0)
     nokogiri (1.10.3)
       mini_portile2 (~> 2.4.0)
     overcommit (0.48.1)
@@ -149,7 +149,6 @@ GEM
       rdoc (>= 5.0)
     sorbet (0.4.4394)
       sorbet-static (= 0.4.4394)
-    sorbet-rails (0.3.0)
     sorbet-runtime (0.4.4394)
     sorbet-static (0.4.4394-universal-darwin-14)
     spring (2.1.0)
@@ -197,7 +196,6 @@ DEPENDENCIES
   sassc-rails
   sdoc
   sorbet
-  sorbet-rails
   sorbet-runtime
   spring
   sqlite3
