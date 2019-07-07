@@ -2369,6 +2369,7 @@
 # wrong constant name environment
 # wrong constant name report
 # wrong constant name write
+# wrong constant name github_https?
 # wrong constant name <Class:AuthenticationRequiredError>
 # wrong constant name <Class:BadAuthenticationError>
 # wrong constant name <Class:Base>
@@ -3504,6 +3505,7 @@
 # wrong constant name <Class:DefaultUserInteraction>
 # wrong constant name <Class:DependencyInstaller>
 # wrong constant name <Class:DependencyList>
+# wrong constant name <Class:Ext>
 # wrong constant name <Class:Installer>
 # wrong constant name <Class:Licenses>
 # wrong constant name <Class:NameTuple>
@@ -3770,7 +3772,26 @@
 # wrong constant name _deprecated_source_exception
 # wrong constant name source_exception
 # wrong constant name source_exception=
+# wrong constant name <Class:BuildError>
+# wrong constant name <Class:Builder>
+# wrong constant name <Class:CmakeBuilder>
+# wrong constant name <Class:ConfigureBuilder>
+# wrong constant name <Class:ExtConfBuilder>
+# wrong constant name <Class:RakeBuilder>
 # wrong constant name <static-init>
+# wrong constant name build_args
+# wrong constant name build_args=
+# wrong constant name build_error
+# wrong constant name build_extension
+# wrong constant name build_extensions
+# wrong constant name builder_for
+# wrong constant name initialize
+# wrong constant name write_gem_make_out
+# wrong constant name <static-init>
+# wrong constant name class_name
+# wrong constant name make
+# wrong constant name redirector
+# wrong constant name run
 # uninitialized constant Gem::Ext::CmakeBuilder::CHDIR_MONITOR
 # uninitialized constant Gem::Ext::CmakeBuilder::CHDIR_MUTEX
 # wrong constant name <static-init>
@@ -3788,6 +3809,7 @@
 # uninitialized constant Gem::Ext::RakeBuilder::CHDIR_MUTEX
 # wrong constant name <static-init>
 # wrong constant name build
+# wrong constant name <static-init>
 # wrong constant name directory
 # wrong constant name initialize
 # wrong constant name file_path
@@ -5343,7 +5365,7 @@
 # wrong constant name transform_values
 # wrong constant name transform_values!
 # wrong constant name update
-# wrong constant name from_xml
+# wrong constant name try_convert
 # wrong constant name <Class:Gettext>
 # wrong constant name <Class:Locale>
 # wrong constant name <Class:Middleware>
