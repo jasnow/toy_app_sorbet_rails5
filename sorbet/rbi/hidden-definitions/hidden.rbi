@@ -17724,6 +17724,10 @@ module MiniMime
   VERSION = ::T.let(nil, ::T.untyped)
 end
 
+module MiniMime::Configuration
+  extend ::T::Sig
+end
+
 class MiniMime::Db
   LOCK = ::T.let(nil, ::T.untyped)
 end
@@ -18046,17 +18050,13 @@ class Net::HTTPBadResponse
   extend ::T::Sig
 end
 
+Net::HTTPClientError::EXCEPTION_TYPE = Net::HTTPServerException
+
 class Net::HTTPClientError
   extend ::T::Sig
 end
 
-class Net::HTTPClientError
-end
-
-Net::HTTPClientErrorCode::EXCEPTION_TYPE = Net::HTTPServerException
-
-class Net::HTTPClientError
-end
+Net::HTTPClientErrorCode = Net::HTTPClientError
 
 Net::HTTPClientException = Net::HTTPServerException
 
@@ -18294,17 +18294,13 @@ end
 class Net::HTTPRangeNotSatisfiable
 end
 
+Net::HTTPRedirection::EXCEPTION_TYPE = Net::HTTPRetriableError
+
 class Net::HTTPRedirection
   extend ::T::Sig
 end
 
-class Net::HTTPRedirection
-end
-
-Net::HTTPRedirectionCode::EXCEPTION_TYPE = Net::HTTPRetriableError
-
-class Net::HTTPRedirection
-end
+Net::HTTPRedirectionCode = Net::HTTPRedirection
 
 class Net::HTTPRequest
   extend ::T::Sig
@@ -18355,17 +18351,13 @@ class Net::HTTPSeeOther
   extend ::T::Sig
 end
 
+Net::HTTPServerError::EXCEPTION_TYPE = Net::HTTPFatalError
+
 class Net::HTTPServerError
   extend ::T::Sig
 end
 
-class Net::HTTPServerError
-end
-
-Net::HTTPServerErrorCode::EXCEPTION_TYPE = Net::HTTPFatalError
-
-class Net::HTTPServerError
-end
+Net::HTTPServerErrorCode = Net::HTTPServerError
 
 class Net::HTTPServerException
   extend ::T::Sig
