@@ -18363,17 +18363,13 @@ Net::HTTPSession::ProxyMod = Net::HTTP::ProxyDelta
 class Net::HTTP
 end
 
+Net::HTTPSuccess::EXCEPTION_TYPE = Net::HTTPError
+
 class Net::HTTPSuccess
   extend ::T::Sig
 end
 
-class Net::HTTPSuccess
-end
-
-Net::HTTPSuccessCode::EXCEPTION_TYPE = Net::HTTPError
-
-class Net::HTTPSuccess
-end
+Net::HTTPSuccessCode = Net::HTTPSuccess
 
 class Net::HTTPSwitchProtocol
   extend ::T::Sig
@@ -30286,6 +30282,14 @@ module Sorbet::Private
 end
 
 class Sorbet
+  extend ::T::Sig
+end
+
+module SorbetRails::CustomFinderMethods
+  extend ::T::Sig
+end
+
+module SorbetRails
   extend ::T::Sig
 end
 
