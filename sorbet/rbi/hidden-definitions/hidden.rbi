@@ -7156,21 +7156,7 @@ end
 
 class BigDecimal
   extend ::T::Sig
-  def self._load(_); end
-
-  def self.double_fig(); end
-
-  def self.limit(*_); end
-
-  def self.mode(*_); end
-
   def self.new(*args, **kwargs); end
-
-  def self.save_exception_mode(); end
-
-  def self.save_limit(); end
-
-  def self.save_rounding_mode(); end
 end
 
 module BigMath

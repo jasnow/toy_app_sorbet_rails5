@@ -2350,14 +2350,11 @@
 # wrong constant name power$2
 # wrong constant name to_d
 # wrong constant name to_digits
-# wrong constant name _load
-# wrong constant name double_fig
-# wrong constant name limit
-# wrong constant name mode
+# undefined singleton method `limit$1' for `BigDecimal'
+# undefined singleton method `mode$1' for `BigDecimal'
+# wrong constant name limit$1
+# wrong constant name mode$1
 # wrong constant name new
-# wrong constant name save_exception_mode
-# wrong constant name save_limit
-# wrong constant name save_rounding_mode
 # wrong constant name clone
 # wrong constant name irb
 # wrong constant name local_variable_defined?

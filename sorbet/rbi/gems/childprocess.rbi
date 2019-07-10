@@ -7,7 +7,7 @@
 #
 #   https://github.com/sorbet/sorbet-typed/new/master?filename=lib/childprocess/all/childprocess.rbi
 #
-# childprocess-0.9.0
+# childprocess-1.0.1
 module ChildProcess
   def self.arch; end
   def self.build(*args); end
@@ -37,6 +37,9 @@ end
 class ChildProcess::InvalidEnvironmentVariable < ChildProcess::Error
 end
 class ChildProcess::LaunchError < ChildProcess::Error
+end
+class ChildProcess::MissingFFIError < ChildProcess::Error
+  def initialize; end
 end
 class ChildProcess::MissingPlatformError < ChildProcess::Error
   def initialize; end
