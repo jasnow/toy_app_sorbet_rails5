@@ -3974,10 +3974,6 @@ module ActiveModel::Conversion
   extend ::T::Sig
 end
 
-module ActiveModel::Dirty
-  extend ::T::Sig
-end
-
 class ActiveModel::Errors
   CALLBACKS_OPTIONS = ::T.let(nil, ::T.untyped)
   MESSAGE_OPTIONS = ::T.let(nil, ::T.untyped)
@@ -4608,10 +4604,6 @@ module ActiveRecord::AttributeMethods::ClassMethods
 end
 
 module ActiveRecord::AttributeMethods::ClassMethods
-  extend ::T::Sig
-end
-
-module ActiveRecord::AttributeMethods::Dirty
   extend ::T::Sig
 end
 
@@ -5915,8 +5907,6 @@ ActiveRecord::Type::BigInteger = ActiveModel::Type::BigInteger
 
 ActiveRecord::Type::Binary = ActiveModel::Type::Binary
 
-ActiveRecord::Type::Boolean = ActiveModel::Type::Boolean
-
 ActiveRecord::Type::Decimal = ActiveModel::Type::Decimal
 
 ActiveRecord::Type::Float = ActiveModel::Type::Float
@@ -5939,8 +5929,6 @@ ActiveRecord::Type::String = ActiveModel::Type::String
 class ActiveRecord::Type::Time::Value
 end
 
-ActiveRecord::Type::Value = ActiveModel::Type::Value
-
 module ActiveRecord::Type
   extend ::T::Sig
 end
@@ -5948,8 +5936,6 @@ end
 module ActiveRecord::TypeCaster
   extend ::T::Sig
 end
-
-ActiveRecord::UnknownAttributeError = ActiveModel::UnknownAttributeError
 
 module ActiveRecord::VERSION
   MAJOR = ::T.let(nil, ::T.untyped)
