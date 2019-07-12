@@ -135,7 +135,7 @@ module ActiveRecord::Associations::ClassMethods
       foreign_type: T.nilable(T.any(Symbol, String)),
       inverse_of: T.nilable(T.any(Symbol, String)),
       optional: T.nilable(T::Boolean),
-      polymorphic: T.nilable(T.any(Symbol, String)),
+      polymorphic: T.nilable(T::Boolean),
       primary_key: T.nilable(T.any(Symbol, String)),
       required: T.nilable(T::Boolean),
       touch: T.nilable(T::Boolean),
@@ -454,10 +454,25 @@ class ActiveRecord::Base
   sig do
     params(
       names: T.any(T::Array[Symbol], Symbol),
+      absence: T.nilable(T::Boolean),
+      acceptance: T.any(T::Boolean, Hash),
+      confirmation: T.any(T::Boolean, Hash),
+      exclusion: T.nilable(Hash),
+      format: T.nilable(Hash),
+      length: T.nilable(Hash),
+      numericality: T.any(T::Boolean, Hash),
       presence: T.nilable(T::Boolean),
       inclusion: T.any(
         T::Array[T.any(String, Symbol)],
         { in: T::Array[T.any(Symbol, String, T::Boolean, NilClass)]}
+      ),
+      size: T.nilable(Hash),
+      uniqueness: T.any(
+        T::Boolean,
+        {
+          scope: T.any(Symbol, String, T::Array[T.any(Symbol, String)]),
+          case_sensitive: T::Boolean
+        }
       ),
       unless: T.nilable(Symbol),
       if: T.nilable(Symbol),
@@ -467,8 +482,17 @@ class ActiveRecord::Base
   end
   def self.validates(
     *names,
+    absence: nil,
+    acceptance: nil,
+    confirmation: nil,
+    exclusion: nil,
+    format: nil,
+    length: nil,
+    numericality: nil,
     presence: nil,
     inclusion: nil,
+    size: nil,
+    uniqueness: nil,
     on: nil,
     unless: nil,
     if: nil,
