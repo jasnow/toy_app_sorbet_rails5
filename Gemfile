@@ -14,6 +14,8 @@ gem 'overcommit'
 gem 'sorbet'
 gem 'sorbet-runtime'
 gem 'sorbet-rails'
+gem 'dalli' # for cache_classes in test and production
+gem 'redis' # for cache_classes in test and production
 
 group :development do
   gem 'web-console'
