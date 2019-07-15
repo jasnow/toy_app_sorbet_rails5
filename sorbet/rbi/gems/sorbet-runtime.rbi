@@ -7,7 +7,7 @@
 #
 #   https://github.com/sorbet/sorbet-typed/new/master?filename=lib/sorbet-runtime/all/sorbet-runtime.rbi
 #
-# sorbet-runtime-0.4.4429
+# sorbet-runtime-0.4.4435
 module T::Configuration
   def self.call_validation_error_handler(signature, opts); end
   def self.call_validation_error_handler=(value); end
@@ -35,6 +35,7 @@ module T::Configuration
   def self.soft_assert_handler=(value); end
   def self.soft_assert_handler_default(str, extra); end
   def self.validate_lambda_given!(value); end
+  def self.without_ruby_warnings; end
 end
 module T::Profile
   def self.reset; end

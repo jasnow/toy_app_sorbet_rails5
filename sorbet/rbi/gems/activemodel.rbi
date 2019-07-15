@@ -7,7 +7,7 @@
 #
 #   https://github.com/sorbet/sorbet-typed/new/master?filename=lib/activemodel/all/activemodel.rbi
 #
-# activemodel-6.0.0.rc1
+# activemodel-5.2.3
 module ActiveModel
   def self.eager_load!; end
   def self.gem_version; end
@@ -94,7 +94,7 @@ class ActiveModel::AttributeSet
   def each_value(*args, &block); end
   def except(*args, &block); end
   def fetch(*args, &block); end
-  def fetch_value(name, &block); end
+  def fetch_value(name); end
   def freeze; end
   def initialize(attributes); end
   def initialize_clone(_); end
@@ -171,7 +171,7 @@ module ActiveModel::AttributeMethods::ClassMethods
   def attribute_method_suffix(*suffixes); end
   def define_attribute_method(attr_name); end
   def define_attribute_methods(*attr_names); end
-  def define_proxy_call(include_private, mod, name, target, *extra); end
+  def define_proxy_call(include_private, mod, name, send, *extra); end
   def generated_attribute_methods; end
   def instance_method_already_implemented?(method_name); end
   def undefine_attribute_methods; end
@@ -179,24 +179,23 @@ end
 class ActiveModel::AttributeMethods::ClassMethods::AttributeMethodMatcher
   def initialize(options = nil); end
   def match(method_name); end
+  def method_missing_target; end
   def method_name(attr_name); end
   def plain?; end
   def prefix; end
   def suffix; end
-  def target; end
 end
 class ActiveModel::AttributeMethods::ClassMethods::AttributeMethodMatcher::AttributeMethodMatch < Struct
   def attr_name; end
   def attr_name=(_); end
+  def method_name; end
+  def method_name=(_); end
   def self.[](*arg0); end
   def self.inspect; end
   def self.members; end
   def self.new(*arg0); end
   def target; end
   def target=(_); end
-end
-module ActiveModel::AttributeMethods::AttrNames
-  def self.define_attribute_accessor_method(mod, attr_name, writer: nil); end
 end
 class ActiveModel::Errors
   def [](attribute); end
@@ -229,11 +228,7 @@ class ActiveModel::Errors
   def messages; end
   def normalize_detail(message, options); end
   def normalize_message(attribute, message, options); end
-  def of_kind?(attribute, message = nil); end
-  def self.i18n_customize_full_message; end
-  def self.i18n_customize_full_message=(arg0); end
   def size; end
-  def slice!(*keys); end
   def to_a; end
   def to_hash(full_messages = nil); end
   def to_xml(options = nil); end
@@ -258,10 +253,13 @@ module ActiveModel::SecurePassword
   extend ActiveSupport::Concern
 end
 module ActiveModel::SecurePassword::ClassMethods
-  def has_secure_password(attribute = nil, validations: nil); end
+  def has_secure_password(options = nil); end
 end
-class ActiveModel::SecurePassword::InstanceMethodsOnActivation < Module
-  def initialize(attribute); end
+module ActiveModel::SecurePassword::InstanceMethodsOnActivation
+  def authenticate(unencrypted_password); end
+  def password; end
+  def password=(unencrypted_password); end
+  def password_confirmation=(unencrypted_password); end
 end
 module ActiveModel::Callbacks
   def _define_after_model_callback(klass, callback); end
@@ -293,7 +291,6 @@ class ActiveModel::Name
   def human(options = nil); end
   def i18n_key; end
   def initialize(klass, namespace = nil, name = nil); end
-  def match?(*args, &block); end
   def name; end
   def param_key; end
   def plural; end
@@ -338,7 +335,6 @@ module ActiveModel::Type::Helpers::Numeric
   def changed?(old_value, _new_value, new_value_before_type_cast); end
   def non_numeric_string?(value); end
   def number_to_non_number?(old_value, new_value_before_type_cast); end
-  def serialize(value); end
 end
 module ActiveModel::Type::Helpers::Mutable
   def cast(value); end
@@ -381,6 +377,7 @@ end
 class ActiveModel::Type::Integer < ActiveModel::Type::Value
   def _limit; end
   def cast_value(value); end
+  def deserialize(value); end
   def ensure_in_range(value); end
   def initialize(*arg0); end
   def max_value; end
@@ -417,16 +414,16 @@ class ActiveModel::Type::Date < ActiveModel::Type::Value
   def fallback_string_to_date(string); end
   def fast_string_to_date(string); end
   def new_date(year, mon, mday); end
+  def serialize(value); end
   def type; end
   def type_cast_for_schema(value); end
   def value_from_multiparameter_assignment(*arg0); end
   include ActiveModel::Type::Helpers::Timezone
-  include Anonymous_ActiveModel_Type_Helpers_AcceptsMultiparameterTime_6
+  include Anonymous_ActiveModel_Type_Helpers_AcceptsMultiparameterTime_5
 end
-module Anonymous_ActiveModel_Type_Helpers_AcceptsMultiparameterTime_6
+module Anonymous_ActiveModel_Type_Helpers_AcceptsMultiparameterTime_5
   def assert_valid_value(value); end
   def cast(value); end
-  def serialize(value); end
   def value_constructed_by_mass_assignment?(value); end
   def value_from_multiparameter_assignment(values_hash); end
 end
@@ -434,16 +431,16 @@ class ActiveModel::Type::DateTime < ActiveModel::Type::Value
   def cast_value(value); end
   def fallback_string_to_time(string); end
   def microseconds(time); end
+  def serialize(value); end
   def type; end
   def value_from_multiparameter_assignment(values_hash); end
   include ActiveModel::Type::Helpers::TimeValue
   include ActiveModel::Type::Helpers::Timezone
-  include Anonymous_ActiveModel_Type_Helpers_AcceptsMultiparameterTime_7
+  include Anonymous_ActiveModel_Type_Helpers_AcceptsMultiparameterTime_6
 end
-module Anonymous_ActiveModel_Type_Helpers_AcceptsMultiparameterTime_7
+module Anonymous_ActiveModel_Type_Helpers_AcceptsMultiparameterTime_6
   def assert_valid_value(value); end
   def cast(value); end
-  def serialize(value); end
   def value_constructed_by_mass_assignment?(value); end
   def value_from_multiparameter_assignment(values_hash); end
 end
@@ -458,6 +455,7 @@ class ActiveModel::Type::Decimal < ActiveModel::Type::Value
 end
 class ActiveModel::Type::Float < ActiveModel::Type::Value
   def cast_value(value); end
+  def serialize(value); end
   def type; end
   def type_cast_for_schema(value); end
   include ActiveModel::Type::Helpers::Numeric
@@ -473,16 +471,16 @@ class ActiveModel::Type::String < ActiveModel::Type::ImmutableString
 end
 class ActiveModel::Type::Time < ActiveModel::Type::Value
   def cast_value(value); end
+  def serialize(value); end
   def type; end
   def user_input_in_time_zone(value); end
   include ActiveModel::Type::Helpers::TimeValue
   include ActiveModel::Type::Helpers::Timezone
-  include Anonymous_ActiveModel_Type_Helpers_AcceptsMultiparameterTime_8
+  include Anonymous_ActiveModel_Type_Helpers_AcceptsMultiparameterTime_7
 end
-module Anonymous_ActiveModel_Type_Helpers_AcceptsMultiparameterTime_8
+module Anonymous_ActiveModel_Type_Helpers_AcceptsMultiparameterTime_7
   def assert_valid_value(value); end
   def cast(value); end
-  def serialize(value); end
   def value_constructed_by_mass_assignment?(value); end
   def value_from_multiparameter_assignment(values_hash); end
 end
@@ -667,7 +665,6 @@ end
 class ActiveModel::AttributeMutationTracker
   def any_changes?; end
   def attr_names; end
-  def attribute_changed?(attr_name); end
   def attributes; end
   def change_to_attribute(attr_name); end
   def changed?(attr_name, from: nil, to: nil); end
@@ -675,36 +672,23 @@ class ActiveModel::AttributeMutationTracker
   def changed_in_place?(attr_name); end
   def changed_values; end
   def changes; end
-  def fetch_value(attr_name); end
   def force_change(attr_name); end
   def forced_changes; end
   def forget_change(attr_name); end
-  def initialize(attributes, forced_changes = nil); end
-  def original_value(attr_name); end
-end
-class ActiveModel::ForcedMutationTracker < ActiveModel::AttributeMutationTracker
-  def attr_names; end
-  def attribute_changed?(attr_name); end
-  def change_to_attribute(attr_name); end
-  def changed_in_place?(attr_name); end
-  def clone_value(attr_name); end
-  def fetch_value(attr_name); end
-  def finalize_changes; end
-  def finalized_changes; end
-  def force_change(attr_name); end
-  def forget_change(attr_name); end
-  def initialize(attributes, forced_changes = nil); end
+  def initialize(attributes); end
   def original_value(attr_name); end
 end
 class ActiveModel::NullMutationTracker
-  def any_changes?; end
+  def any_changes?(*arg0); end
   def change_to_attribute(attr_name); end
-  def changed?(attr_name, **arg1); end
-  def changed_attribute_names; end
-  def changed_in_place?(attr_name); end
-  def changed_values; end
-  def changes; end
-  def original_value(attr_name); end
+  def changed?(*arg0); end
+  def changed_attribute_names(*arg0); end
+  def changed_in_place?(*arg0); end
+  def changed_values(*arg0); end
+  def changes(*arg0); end
+  def force_change(*arg0); end
+  def forget_change(*arg0); end
+  def original_value(*arg0); end
   def self.allocate; end
   def self.instance; end
   def self.new(*arg0); end
@@ -712,28 +696,35 @@ class ActiveModel::NullMutationTracker
   include Singleton
 end
 module ActiveModel::Dirty
-  def attribute_change(attr_name); end
-  def attribute_changed?(attr_name, **options); end
+  def attribute_change(attr); end
+  def attribute_changed?(attr, from: nil, to: nil); end
+  def attribute_changed_by_setter?(attr_name); end
   def attribute_changed_in_place?(attr_name); end
-  def attribute_previous_change(attr_name); end
-  def attribute_previously_changed?(attr_name); end
-  def attribute_was(attr_name); end
-  def attribute_will_change!(attr_name); end
+  def attribute_previous_change(attr); end
+  def attribute_previously_changed?(attr); end
+  def attribute_was(attr); end
+  def attribute_will_change!(attr); end
+  def attributes_changed_by_setter; end
+  def cache_changed_attributes; end
   def changed; end
   def changed?; end
   def changed_attributes; end
   def changes; end
   def changes_applied; end
+  def changes_include?(attr_name); end
   def clear_attribute_change(attr_name); end
   def clear_attribute_changes(attr_names); end
+  def clear_changed_attributes_cache; end
   def clear_changes_information; end
   def forget_attribute_assignments; end
   def initialize_dup(other); end
   def mutations_before_last_save; end
   def mutations_from_database; end
   def previous_changes; end
-  def restore_attribute!(attr_name); end
-  def restore_attributes(attr_names = nil); end
+  def previous_changes_include?(attr_name); end
+  def restore_attribute!(attr); end
+  def restore_attributes(attributes = nil); end
+  def set_attribute_was(attr, old_value); end
   extend ActiveSupport::Concern
   include ActiveModel::AttributeMethods
 end

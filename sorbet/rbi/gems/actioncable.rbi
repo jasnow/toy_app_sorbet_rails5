@@ -7,7 +7,7 @@
 #
 #   https://github.com/sorbet/sorbet-typed/new/master?filename=lib/actioncable/all/actioncable.rbi
 #
-# actioncable-6.0.0.rc1
+# actioncable-5.2.3
 module ActionCable
   def self.gem_version; end
   def self.server; end
@@ -148,14 +148,12 @@ module ActionCable::Channel::Naming::ClassMethods
   def channel_name; end
 end
 module ActionCable::Channel::Broadcasting
-  def broadcast_to(*args, &block); end
   def broadcasting_for(*args, &block); end
   extend ActiveSupport::Concern
 end
 module ActionCable::Channel::Broadcasting::ClassMethods
   def broadcast_to(model, message); end
   def broadcasting_for(model); end
-  def serialize_broadcasting(object); end
 end
 class ActionCable::Channel::Base
   def __callbacks; end
@@ -181,9 +179,6 @@ class ActionCable::Channel::Base
   def processable_action?(action); end
   def reject; end
   def reject_subscription; end
-  def rescue_handlers; end
-  def rescue_handlers=(val); end
-  def rescue_handlers?; end
   def self.__callbacks; end
   def self.__callbacks=(val); end
   def self.__callbacks?; end
@@ -197,9 +192,6 @@ class ActionCable::Channel::Base
   def self.periodic_timers; end
   def self.periodic_timers=(val); end
   def self.periodic_timers?; end
-  def self.rescue_handlers; end
-  def self.rescue_handlers=(val); end
-  def self.rescue_handlers?; end
   def subscribe_to_channel; end
   def subscribed; end
   def subscription_confirmation_sent?; end
@@ -215,22 +207,21 @@ class ActionCable::Channel::Base
   extend ActionCable::Channel::PeriodicTimers::ClassMethods
   extend ActiveSupport::Callbacks::ClassMethods
   extend ActiveSupport::DescendantsTracker
-  extend ActiveSupport::Rescuable::ClassMethods
   include ActionCable::Channel::Broadcasting
   include ActionCable::Channel::Callbacks
   include ActionCable::Channel::Naming
   include ActionCable::Channel::PeriodicTimers
   include ActionCable::Channel::Streams
   include ActiveSupport::Callbacks
-  include ActiveSupport::Rescuable
 end
 class ActionCable::Server::Base
   def call(env); end
   def config; end
+  def config=(obj); end
   def connection_identifiers; end
   def disconnect(identifiers); end
   def event_loop; end
-  def initialize(config: nil); end
+  def initialize; end
   def logger(*args, &block); end
   def mutex; end
   def pubsub; end

@@ -7,7 +7,7 @@
 #
 #   https://github.com/sorbet/sorbet-typed/new/master?filename=lib/actionmailer/all/actionmailer.rbi
 #
-# actionmailer-6.0.0.rc1
+# actionmailer-5.2.3
 module ActionMailer
   def self.eager_load!; end
   def self.gem_version; end
@@ -19,12 +19,11 @@ end
 class ActionMailer::Railtie < Rails::Railtie
 end
 module ActionMailer::TestHelper
-  def assert_emails(number, &block); end
+  def assert_emails(number); end
   def assert_enqueued_email_with(mailer, method, args: nil, queue: nil, &block); end
   def assert_enqueued_emails(number, &block); end
   def assert_no_emails(&block); end
   def assert_no_enqueued_emails(&block); end
-  def delivery_job_filter(job); end
   include ActiveJob::TestHelper
 end
 class ActionMailer::NonInferrableMailerError < StandardError

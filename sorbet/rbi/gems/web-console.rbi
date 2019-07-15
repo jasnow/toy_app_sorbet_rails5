@@ -7,7 +7,7 @@
 #
 #   https://github.com/sorbet/sorbet-typed/new/master?filename=lib/web-console/all/web-console.rbi
 #
-# web-console-4.0.0
+# web-console-3.7.0
 module WebConsole
   def self.logger; end
   extend ActiveSupport::Autoload
@@ -18,11 +18,11 @@ module Kernel
   def console(binding = nil); end
   def self.console(binding = nil); end
 end
-class Binding
-  def console; end
+module ActionDispatch
 end
-module WebConsole::Interceptor
-  def self.call(request, exception); end
+class ActionDispatch::DebugExceptions
+  def render_exception_with_web_console(request, exception); end
+  def render_exception_without_web_console(request, exception); end
 end
 class WebConsole::Middleware
   def acceptable_content_type?(headers); end
@@ -50,7 +50,7 @@ class WebConsole::Middleware
   def whiny_requests; end
   def whiny_requests=(obj); end
 end
-class WebConsole::Permissions
+class WebConsole::Whitelist
   def coerce_network_to_ipaddr(network); end
   def human_readable_ipaddr(ipaddr); end
   def include?(network); end
@@ -59,12 +59,13 @@ class WebConsole::Permissions
   def to_s; end
 end
 class WebConsole::Request < ActionDispatch::Request
-  def permissions; end
-  def permissions=(obj); end
-  def permitted?; end
-  def self.permissions; end
-  def self.permissions=(obj); end
+  def acceptable?; end
+  def from_whitelisted_ip?; end
+  def self.whitelisted_ips; end
+  def self.whitelisted_ips=(obj); end
   def strict_remote_ip; end
+  def whitelisted_ips; end
+  def whitelisted_ips=(obj); end
 end
 class WebConsole::Request::GetSecureIp < ActionDispatch::RemoteIp::GetIp
   def filter_proxies(ips); end

@@ -11,7 +11,6 @@
 module RailsStdoutLogging
 end
 class RailsStdoutLogging::StdoutLogger < ActiveSupport::Logger
-  include ActiveSupport::LoggerSilence
   include LoggerSilence
 end
 class RailsStdoutLogging::Rails
