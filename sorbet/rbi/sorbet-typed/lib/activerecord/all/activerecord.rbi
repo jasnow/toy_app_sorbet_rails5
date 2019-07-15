@@ -241,6 +241,13 @@ module ActiveRecord::Scoping::Named::ClassMethods
   ); end
 end
 
+module ActiveRecord::Scoping::Default::ClassMethods
+end
+
+module ActiveRecord::Inheritance
+  mixes_in_class_methods(ActiveRecord::Inheritance::ClassMethods)
+end
+
 class ActiveRecord::Base
   extend ActiveModel::Naming
 
@@ -254,8 +261,6 @@ class ActiveRecord::Base
   extend ActiveRecord::DynamicMatchers
   extend ActiveRecord::Explain
   extend ActiveRecord::Enum
-  extend ActiveRecord::Delegation::DelegateCache
-  extend ActiveRecord::CollectionCacheKey
 
   include ActiveRecord::Core
   include ActiveRecord::Persistence
@@ -277,7 +282,6 @@ class ActiveRecord::Base
   include ActiveRecord::AttributeDecorators
   include ActiveRecord::Locking::Optimistic
   include ActiveRecord::Locking::Pessimistic
-  include ActiveRecord::DefineCallbacks
   include ActiveRecord::AttributeMethods
   include ActiveRecord::AttributeMethods::Read # via ActiveRecord::AttributeMethods#included hook
   include ActiveRecord::AttributeMethods::Write # via ActiveRecord::AttributeMethods#included hook
@@ -297,13 +301,10 @@ class ActiveRecord::Base
   extend ActiveRecord::NestedAttributes::ClassMethods # via ActiveRecord::NestedAttributes Concern inclusion
   include ActiveRecord::Aggregations
   include ActiveRecord::Transactions
-  include ActiveRecord::TouchLater
   include ActiveRecord::NoTouching
   include ActiveRecord::Reflection
   include ActiveRecord::Serialization
   include ActiveRecord::Store
-  include ActiveRecord::SecureToken
-  include ActiveRecord::Suppressor
 
   sig do
     params(
